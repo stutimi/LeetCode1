@@ -9,7 +9,7 @@ public:
             for (int j=0; j<m; ++j)
                 ++cnt[j+1][a[i][j]-'a'];
         
-        vector<vector<long long>> f(m+1, vector<long long>(l+1)); // first m column get first n char
+        vector<vector<long long>> f(m+1, vector<long long>(l+1)); 
         f[0][0] = 1;
         for (int i=1; i<=m; ++i) {
             f[i][0] = 1;
