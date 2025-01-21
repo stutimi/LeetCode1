@@ -1,23 +1,20 @@
 class Solution {
 public:
     bool checkRecord(string s) {
-        int absentCount = 0;
-        int lateStreak = 0;
-
+        int ca = 0; 
+        int cl = 0;
         for (char c : s) {
             if (c == 'A') {
-                absentCount++;
-                if (absentCount >= 2) return false;
-            }
-            if (c == 'L') {
-                lateStreak++;
-                if (lateStreak >= 3) return false;
+                ca++;
+                if (ca >= 2) return false;
+                cl = 0; 
+            } else if (c == 'L') {
+                cl++;
+                if (cl >= 3) return false;
             } else {
-                lateStreak = 0;
+                cl = 0; 
             }
         }
-
         return true;
     }
 };
-;
