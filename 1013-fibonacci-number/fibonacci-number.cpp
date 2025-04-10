@@ -1,17 +1,13 @@
 class Solution {
 public:
-    int rec(int n, vector<int>&t ){
-        //base case
+    int fib(int n) {
         if(n==0 || n==1) return n;
-        //check if already present 
-        if (t[n]!= -1){
-            return t[n];
-        }
-        //recursive case
-        return t[n] = rec(n-1, t)+rec(n-2, t);
-    }
-    int  fib(int n){
-        vector<int>t(n+1,-1);
-        return rec(n,t);
+     int a = 0;
+     int b = 1;
+     for(int i =2; i<=n; i++){
+        int c = a+b;
+        a=b;
+        b=c;}
+        return b;
     }
 };
