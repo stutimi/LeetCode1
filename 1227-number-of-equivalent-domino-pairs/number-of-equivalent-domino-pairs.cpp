@@ -1,23 +1,16 @@
 class Solution {
 public:
     int numEquivDominoPairs(vector<vector<int>>& dominoes) {
-        int count = 0;
-        int freq[100] = {0};
-
-        for (auto& d : dominoes) {
-            int a = d[0];
-            int b = d[1];
-            int key;
-
-            if (a < b)
-                key = a * 10 + b;
-            else
-                key = b * 10 + a;
-
-            count += freq[key];  
-            freq[key]++;         
+        int n = dominoes.size();
+        unordered_map<int,int>freq;
+        int cnt = 0;
+        for(const auto& d : dominoes){
+            int a = min(d[0],d[1]);
+            int b = max(d[0],d[1]);
+            int key = a*10 + b;
+            cnt += freq[key];
+            freq[key]++;
         }
-
-        return count;
+        return cnt;
     }
 };
