@@ -1,21 +1,21 @@
 class Solution {
 public:
     int numEquivDominoPairs(vector<vector<int>>& dominoes) {
-        for (auto& d : dominoes) {
-            if (d[0] > d[1]) swap(d[0], d[1]);
-        }
-
-         sort(dominoes.begin(), dominoes.end());
         int count = 0;
-        int same = 1;
+        int freq[100] = {0};
 
-        for (int i = 1; i < dominoes.size(); ++i) {
-            if (dominoes[i] == dominoes[i - 1]) {
-                count += same;
-                same++;
-            } else {
-                same = 1;
-            }
+        for (auto& d : dominoes) {
+            int a = d[0];
+            int b = d[1];
+            int key;
+
+            if (a < b)
+                key = a * 10 + b;
+            else
+                key = b * 10 + a;
+
+            count += freq[key];  
+            freq[key]++;         
         }
 
         return count;
